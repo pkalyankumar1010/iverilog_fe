@@ -15,15 +15,21 @@ const Output = ({ editorRef, language }) => {
       setIsLoading(true);
       // console.log(await executeCode(language, sourceCode));
       // const { run: result } = await executeCode(language, sourceCode);
-      const result = await executeCode(language, sourceCode);
-      const returnedValue = result.output?.split("\n");
-      const returnedError = result.errors?.split("\n");
+      if (language == "verilog") {
+        const result = await executeCode(language, sourceCode);
+        const returnedValue = result.output?.split("\n");
+        const returnedError = result.errors?.split("\n");
 
-      // Set the error state based on the result.success
-      setIsError(!result.success);
+        // Set the error state based on the result.success
+        setIsError(!result.success);
 
-      // Set the output based on whether the result was successful or not
-      setOutput(result.success ? returnedValue : returnedError);
+        // Set the output based on whether the result was successful or not
+        setOutput(result.success ? returnedValue : returnedError);
+      } else {
+        const { run: result } = await executeCode(language, sourceCode);
+        setOutput(result.output.split("\n"));
+        result.stderr ? setIsError(true) : setIsError(false);
+      }
     } catch (error) {
       console.log(error);
       toast({
