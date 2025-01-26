@@ -9,6 +9,10 @@ This project provides a frontend for an online Verilog compiler where users can 
 - Supports real-time output display.
 - Fast and responsive due to the Vite build system.
 
+<p align="center">
+  <img width="80%" src="figures/iverilog.png">
+</p>
+
 ## Tech Stack
 
 - **Frontend Framework:** React
