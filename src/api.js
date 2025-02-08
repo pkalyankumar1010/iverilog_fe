@@ -8,7 +8,7 @@ const API = axios.create({
 });
 const BASE_URLS = {
   default: "https://emkc.org/api/v2/piston",
-  verilog: "https://beiverilog.sumathi.dev/api/",
+  verilog: "https://locbeiverilog.sumathi.dev/api/",
 };
 
 const getAPIInstance = (language) => {
